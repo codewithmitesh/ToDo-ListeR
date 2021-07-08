@@ -5,12 +5,15 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import FormControl from 'react-bootstrap/FormControl';
+import PropTypes from 'prop-types'
+// import { propTypes } from 'react-bootstrap/esm/Image';
+
  
-export default function Header() {
+export default function Header(props) {
     return (
         <div>
             <Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#home">ToDo-Lister</Navbar.Brand>
+    <Navbar.Brand href="#home">{props.title}</Navbar.Brand>
     <Nav className="mr-auto">
       <Nav.Link href="#home">Home</Nav.Link>
       {/* <Nav.Link href="#features">Features</Nav.Link> */}
@@ -23,4 +26,10 @@ export default function Header() {
   </Navbar>
         </div>
     )
+}
+// Header.defaultprops = {
+//   title: "",
+// }
+Header.propTypes = {
+ title: PropTypes.string
 }
