@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CreateTasks from "../models/CreateTasks";
+import Cards from '../My-Components/Cards';
+
 
 export const TodoList = () => {
   const [modal, setModal] = useState(false);
@@ -11,7 +13,7 @@ export const TodoList = () => {
       let obj = JSON.parse(arr);
       setTaskLIst(obj);
     }
-  }, []);
+  },[]);
 
   const toggle = () => {
     setModal(!modal);
@@ -33,8 +35,8 @@ export const TodoList = () => {
         </button>
       </div>
       <div className="task-Container">
-        {taskList.map((obj) => (
-          <li>{obj.Name}</li>
+        {taskList.map((obj,index) => (
+         <Cards taskobj ={obj} index={index}/>
         ))}
       </div>
       <CreateTasks toggle={toggle} modal={modal} save={saveTask} />
