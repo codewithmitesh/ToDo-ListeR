@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CreateTasks from "../models/CreateTasks";
-import Cards from '../My-Components/Cards';
-
+import Cards from "../My-Components/Cards";
 
 export const TodoList = () => {
   const [modal, setModal] = useState(false);
@@ -13,7 +12,15 @@ export const TodoList = () => {
       let obj = JSON.parse(arr);
       setTaskLIst(obj);
     }
-  },[]);
+  }, []);
+
+  const deleteTask = (index) => {
+    let tempList = taskList;
+    tempList.splice(index, 1);
+    localStorage.setItem("taskList", JSON.stringify(tempList));
+    setTaskLIst(tempList);
+    window.location.reload();
+  };
 
   const toggle = () => {
     setModal(!modal);
@@ -35,9 +42,10 @@ export const TodoList = () => {
         </button>
       </div>
       <div className="task-Container">
-        {taskList.map((obj,index) => (
-         <Cards taskobj ={obj} index={index}/>
-        ))}
+        {taskList &&
+          taskList.map((obj, index) => (
+            <Cards taskobj={obj} index={index} deleteTask={deleteTask} />
+          ))}
       </div>
       <CreateTasks toggle={toggle} modal={modal} save={saveTask} />
     </>

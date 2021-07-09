@@ -1,6 +1,21 @@
-import React from "react";
+import { Modal } from "bootstrap";
+import React,{useState} from "react";
+import EditTask from "../models/EditTask";
 
-export default function Cards({ taskobj, index }) {
+export default function Cards({ taskobj, index, deleteTask }) {
+
+const [modal,setModal] = useState(false);
+
+const toggle = () =>{
+setModal(!modal);
+}
+
+const updateTask = () =>{
+   
+
+
+}
+
   const colors = [
     {
       primaryColor: "#5D93E1",
@@ -24,6 +39,10 @@ export default function Cards({ taskobj, index }) {
     },
   ];
 
+  const handleDelete = () => {
+    deleteTask(index);
+  };
+
   return (
     <div class="card-wrapper mr-5">
       <div
@@ -40,20 +59,23 @@ export default function Cards({ taskobj, index }) {
         >
           {taskobj.Name}
         </span>
-        <p className="mt-3">{taskobj.Description}</p>
+
+        <p className="mt-3">{taskobj.description}</p>
 
         <div style={{ position: "absolute", right: "20px", bottom: "20px" }}>
           <i
             class="far fa-edit mr-3"
             style={{ color: colors[index % 5].primaryColor, cursor: "pointer" }}
+            onClick={()=>setModal(true)}
           ></i>
           <i
             class="fas fa-trash-alt"
             style={{ color: colors[index % 5].primaryColor, cursor: "pointer" }}
+            onClick={handleDelete}
           ></i>
         </div>
       </div>
-      {/* <EditTask modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/> */}
+      <EditTask modal = {modal} toggle = {toggle} updateTask = {updateTask} taskobj = {taskobj}/>
     </div>
   );
 }
