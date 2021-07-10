@@ -35,7 +35,7 @@
 .card-header{
   margin-top: 10px;
   margin-bottom: 10px;
-  max-width: 80px;
+  max-width: fit-content;
   height: 30px;
   padding: 1px 1px !important;
   text-align: center;
@@ -49,3 +49,7 @@
   background-color: #F6F7F8;
   padding : 40px 100px;
 }
+.overfloehandle{
+  overflow: hidden;
+  font-size: 13px !important
+;}

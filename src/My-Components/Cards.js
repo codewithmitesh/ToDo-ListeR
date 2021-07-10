@@ -2,7 +2,7 @@ import { Modal } from "bootstrap";
 import React,{useState} from "react";
 import EditTask from "../models/EditTask";
 
-export default function Cards({ taskobj, index, deleteTask }) {
+export default function Cards({ taskobj, index, deleteTask,updateListarray }) {
 
 const [modal,setModal] = useState(false);
 
@@ -10,9 +10,9 @@ const toggle = () =>{
 setModal(!modal);
 }
 
-const updateTask = () =>{
+const updateTask = (obj) =>{
    
-
+ updateListarray(obj,index)
 
 }
 
@@ -60,7 +60,7 @@ const updateTask = () =>{
           {taskobj.Name}
         </span>
 
-        <p className="mt-3">{taskobj.description}</p>
+        <p className="mt-3 overfloehandle">{taskobj.description}</p>
 
         <div style={{ position: "absolute", right: "20px", bottom: "20px" }}>
           <i

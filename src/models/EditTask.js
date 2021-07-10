@@ -16,13 +16,16 @@ export default function EditTask({ modal, toggle,updateTask,save,taskobj }) {
   };
   const handleUpdate = (e)=>{
    e.preventDefault();
-   
+    let tempobj = {}
+    tempobj["Name"] =taskName;
+    tempobj["description"]  =desc;
+    updateTask(tempobj);
   }
   
 
  useEffect(()=>{
 setTaskName(taskobj.Name) 
-setTaskName(taskobj.description)
+setDescription(taskobj.description)
  },[])
 
 
